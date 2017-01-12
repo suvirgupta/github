@@ -1,0 +1,24 @@
+
+1. go to  https://apps.twitter.com/  ##Create Twitter account first##
+2. Create a new app 
+3. once created you will get Consumer Key (API Key), Consumer Secret (API Secret) this will be used to connect to twitter api
+4. can request for Acess token and Access Token Sceret ## by clicking Regenerate Access Token and Token Secret##
+5. Check for permission in permissions tab sholud be read and write ## Under Application management window##
+
+
+### Acessing Twiter from R###
+library(httr)
+twitter<- oauth_app("twitter", key = "consumer key", secret = "consumer Secret")/* Identify Consumer*/
+
+sig= sign_oauth1.0(twitter, token="Token code", token_secret = " Token Secret")/* Provide authentication*/
+homeTl= GET("https://api.twitter.com/1.1/statuses/home_timeline.json", sig)  /*Get twitter Status content Resource URL paased from "https://dev.twitter.com/docs/api/1.1/get/search/tweets" documentation to get command*/
+json1= content(homeT1)
+json2 = jsonlite::toJSON(json1)/* convert to Json format*/
+json2 = jsonlite::fromJSON(json2)/* Convert to Data.frame*/
+
+
+Httr Allows GET, POST, PUT ,DELETE if person is authorised
+
+other API like facebook , google , twitter, Github etc docs can be seen and desired output can be extracted from them.
+
+
