@@ -1,0 +1,40 @@
+> install.packages("httr")
+Installing package into ‘C:/myRlibs’
+(as ‘lib’ is unspecified)
+also installing the dependencies ‘jsonlite’, ‘mime’, ‘curl’, ‘openssl’, ‘R6’
+
+downloaded 274 KB
+
+package ‘jsonlite’ successfully unpacked and MD5 sums checked
+package ‘mime’ successfully unpacked and MD5 sums checked
+package ‘curl’ successfully unpacked and MD5 sums checked
+package ‘openssl’ successfully unpacked and MD5 sums checked
+package ‘R6’ successfully unpacked and MD5 sums checked
+package ‘httr’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\Suvir Gupta\AppData\Local\Temp\RtmpWCkh3M\downloaded_packages
+> library(httr)
+> url<- "http://www.theatlantic.com/technology/archive/2014/01/how-netflix-reverse-engineered-hollywood/282679/"
+> html1=GET(url)
+> content2= content(html1,as="text")/*import content of web as text*/
+> content(html1,"parsed")/* import content as parsed XML for this have to install "xml2" package*/
+
+###Authentication on the web page
+ pg2 = GET ("http://sample.com", authenticate("user","pass") 
+
+Output:
+Status 200 /*authenticated*/
+Status 401 /* not Authenticated*/
+
+## All important contents of the the connection: 
+> names(html1)
+ [1] "url"         "status_code" "headers"     "all_headers" "cookies"     "content"     "date"        "times"      
+ [9] "request"     "handle"     
+
+## Using Handles /* use handle to save connection cookies to avoid authentication multiple times and the focusing on 
+perticular content on the page*/
+google = handle("https://google.com") 
+pg1= GET(handle=google, path= "search")
+
+
